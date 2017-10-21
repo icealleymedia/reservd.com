@@ -26,10 +26,11 @@ Loader.prototype = {
     }
 }
 
+// function to bring in all files needed for web app to run and firing the first function to build application dynamically
 function init(){
 
     var appScripts = new Loader();
-
+    // load all javascript files that the app is dependant on
     appScripts.require(["https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
         "https://use.fontawesome.com/1bf1738307.js"],
         function(){
@@ -38,5 +39,7 @@ function init(){
     });
 
 }
+
+// on window load init function starts
 
 window.onload = init;

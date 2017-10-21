@@ -1,3 +1,9 @@
+<?php
+	// start php session to allow the session golobal variable to be used
+	session_start();
+
+	// check to see if a user is logged in if not redirect to login page to login
+?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
