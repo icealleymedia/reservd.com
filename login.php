@@ -10,6 +10,15 @@
 		<button id="showText"><i class="fa fa-eye" aria-hidden="true" title="show password in normal text to confirm accuracy"></i><span>ShowText</span></button>
 	</div>
 	<div>
+		<span>
+			<input type="checkbox" name="remember" />
+			<label for="remember">Remember Me</label>
+		</span>
+		<span>
+			<a href="forgot.php" title="forgot your login information click here to gain access">Forgot Password?</a>
+		</span>
+	</div>
+	<div>
 		<input type="submit" value="Log Me In" />
 	</div>
 </form>
