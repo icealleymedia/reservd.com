@@ -1,5 +1,5 @@
 <? require_once("includes/header.php"); ?>
-<form id="login" action="#" method="post">
+<form id="login" action="api/authenticate.php" method="post">
 	<div>
 		<label>Username or Email</label>
 		<span><i class="fa fa-user fa-lg"></i><input type="text" name="loginName" placeholder="Username or Email" required /></span>
