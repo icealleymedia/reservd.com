@@ -1,4 +1,4 @@
-<? require("includes/header.php"); ?>
+<? require_once("includes/header.php"); ?>
 <form id="login" action="#" method="post">
 	<div>
 		<label>Username or Email</label>
@@ -26,4 +26,4 @@
 	<i class="fa fa-spinner fa-pulse fa-5x" aria-hidden="true"></i>
 	<span class="sr-only">Loading....</span>
 </div>
-<? require("includes/footer.php"); ?>
+<? require_once("includes/footer.php"); ?>
