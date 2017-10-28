@@ -3,7 +3,18 @@ require_once('includes/init.php');
 	// start php session to allow the session golobal variable to be used
 	session_start();
 
-	// check to see if a user is logged in if not redirect to login page to login
+	// check user login if logged in get information if not redirect to login page.
+	
+		if(isset($_SESSION["id"]) || isset($_COOKIE["idx"])){
+			// user is logged in query database to get information.
+
+		}else{
+			// user is not logged in redirect to login page if current page isnt the login page.
+			if($_SERVER["PHP_SELF"] != "/login.php"){
+
+				header("location: login.php");
+			}
+		}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,5 +27,6 @@ require_once('includes/init.php');
 	</head>
 	<body>
 		<header>
+			<h1>Reservation App</h1>
 		</header>
 		<section>
