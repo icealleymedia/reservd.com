@@ -34,7 +34,7 @@ function init(){
     coreScripts.require(["https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
         "https://use.fontawesome.com/1bf1738307.js"],
         function(){
-            // Callback function 
+            // Callback function
             $('#login').submit(function(event){
                 event.preventDefault();
                 alert("login attempt");
