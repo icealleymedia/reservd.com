@@ -58,6 +58,10 @@ function init(){
                     data: args,
                     success: function(){
                         // if request is successful redirect to dashboard or home page
+                        function loginRedirect(){
+                            window.location.replace("home.php");
+                        }
+                        setTimout("loginRedirect()", 500000);
 
                     },
                     error: function(data){
