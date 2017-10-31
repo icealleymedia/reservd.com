@@ -56,7 +56,7 @@ function init(){
                     url: "api/authenticate.php",
                     dataType: "json",
                     data: args,
-                    success: function(){
+                    success: function(data){
                         // if request is successful redirect to dashboard or home page
                         function loginRedirect(){
                             window.location.replace("home.php");
