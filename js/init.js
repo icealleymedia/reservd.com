@@ -35,6 +35,8 @@ function init(){
         "https://use.fontawesome.com/1bf1738307.js"],
         function(){
             // Callback function 
+		// Hide noscript //
+		
             $('#login').submit(function(event){
                 event.preventDefault();
                 alert("login attempt");
