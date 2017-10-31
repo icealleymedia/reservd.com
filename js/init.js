@@ -52,6 +52,20 @@ function init(){
                     var remember = true;
                     args["remember"] = true;
                 }
+                $.ajax({
+                    url: "api/authenticate.php",
+                    dataType: "json",
+                    data: args,
+                    success: function(){
+                        // if request is successful redirect to dashboard or home page
+
+                    },
+                    error: function(data){
+                        // there is an error try logging in using localStorage if not display error message
+
+                    }
+
+                });
                 console.log(args);
             });
     });
