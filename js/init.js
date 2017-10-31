@@ -41,13 +41,18 @@ function init(){
                 var user = $('input[name=loginName').val();
                 var pass = $('input[name=loginKey').val();
 
-                var args = username + password;
+                var args = {
+                    username: user,
+                    password: pass
+                };
+
                 alert("your Username is " + user + " and your password is " + pass + " thankyou for logging in");
 
                 if($("input[name=remember").is(":checked")){
                     var remember = true;
-                    var args = args + remember;
+                    args["remember"] = true;
                 }
+                console.log(args);
             });
     });
 
