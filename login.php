@@ -1,5 +1,6 @@
 <? require_once("includes/header.php"); ?>
 <form id="login" action="api/authenticate.php" method="post">
+	<input type="hidden" name="loginLevel" Value="staff" />
 	<div>
 		<label>Username or Email</label>
 		<span><i class="fa fa-user fa-lg"></i><input type="text" name="loginName" placeholder="Username or Email" required /></span>

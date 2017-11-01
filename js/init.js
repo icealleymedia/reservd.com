@@ -40,8 +40,10 @@ function init(){
                 alert("login attempt");
                 var user = $('input[name=loginName').val();
                 var pass = $('input[name=loginKey').val();
+                var loginLevel = $('input[name=loginLevel]');
 
                 var args = {
+                    loginType: loginLevel,
                     username: user,
                     password: pass
                 };
