@@ -34,46 +34,51 @@ function init(){
     coreScripts.require(["https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
         "https://use.fontawesome.com/1bf1738307.js"],
         function(){
-            // Callback function 
-            $('#login').submit(function(event){
-                event.preventDefault();
-                alert("login attempt");
-                var user = $('input[name=loginName').val();
-                var pass = $('input[name=loginKey').val();
-                var loginLevel = $('input[name=loginLevel]').val();
+            // Callback function
+            // check to see if current page is login page
+            var currentPage = window.location.href;
+            if(currentPage.includes("login.php")){
+                // is login page proceed with login 
+                $('#login').submit(function(event){
+                    event.preventDefault();
+                    alert("login attempt");
+                    var user = $('input[name=loginName').val();
+                    var pass = $('input[name=loginKey').val();
+                    var loginLevel = $('input[name=loginLevel]').val();
 
-                var args = {
-                    loginType: loginLevel,
-                    username: user,
-                    password: pass
-                };
+                    var args = {
+                        loginType: loginLevel,
+                        username: user,
+                        password: pass
+                    };
 
-                alert("your Username is " + user + " and your password is " + pass + " thankyou for logging in");
+                    alert("your Username is " + user + " and your password is " + pass + " thankyou for logging in");
 
-                if($("input[name=remember").is(":checked")){
-                    var remember = true;
-                    args["remember"] = true;
-                }
-                /* $.ajax({
-                    url: "api/authenticate.php",
-                    dataType: "json",
-                    data: args,
-                    success: function(data){
-                        // if request is successful redirect to dashboard or home page
-                        function loginRedirect(){
-                            window.location.replace("home.php");
-                        }
-                        setTimout("loginRedirect()", 500000);
-
-                    },
-                    error: function(data){
-                        // there is an error try logging in using localStorage if not display error message
-
+                    if($("input[name=remember").is(":checked")){
+                        var remember = true;
+                        args["remember"] = true;
                     }
+                    $.ajax({
+                        url: "api/authenticate.php",
+                        dataType: "json",
+                        data: args,
+                        success: function(data){
+                            // if request is successful redirect to dashboard or home page
+                            function loginRedirect(){
+                                window.location.replace("home.php");
+                            }
+                            setTimout("loginRedirect()", 500000);
 
-                }); */
-                console.log(args);
-            });
+                        },
+                        error: function(data){
+                            // there is an error try logging in using localStorage if not display error message
+
+                        }
+
+                    }); 
+                    console.log(args);
+                });
+            }
     });
 
 }
