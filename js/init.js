@@ -40,7 +40,7 @@ function init(){
                 alert("login attempt");
                 var user = $('input[name=loginName').val();
                 var pass = $('input[name=loginKey').val();
-                var loginLevel = $('input[name=loginLevel]');
+                var loginLevel = $('input[name=loginLevel]').val();
 
                 var args = {
                     loginType: loginLevel,
@@ -54,7 +54,7 @@ function init(){
                     var remember = true;
                     args["remember"] = true;
                 }
-                $.ajax({
+                /* $.ajax({
                     url: "api/authenticate.php",
                     dataType: "json",
                     data: args,
@@ -71,7 +71,7 @@ function init(){
 
                     }
 
-                });
+                }); */
                 console.log(args);
             });
     });
