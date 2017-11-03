@@ -45,6 +45,7 @@ function init(){
                     var user = $('input[name=loginName').val();
                     var pass = $('input[name=loginKey').val();
                     var loginLevel = $('input[name=loginLevel]').val();
+                    var path = $(this).attr("action");
 
                     var args = {
                         loginType: loginLevel,
@@ -59,24 +60,32 @@ function init(){
                         args["remember"] = true;
                     }
                     $.ajax({
-                        url: "api/authenticate.php",
+                        url: path,
                         dataType: "json",
                         data: args,
                         success: function(data){
                             // if request is successful redirect to dashboard or home page
-                            function loginRedirect(){
+                           /* function loginRedirect(){
                                 window.location.replace("home.php");
                             }
-                            setTimout("loginRedirect()", 500000);
+                            setTimout("loginRedirect()", 500000); */
+
+                            console.log("database Connection successful");
+
+                            console.log(this.data);
 
                         },
                         error: function(data){
                             // there is an error try logging in using localStorage if not display error message
 
+                            console.log("no database connection found");
+                            console.log(this.data);
+
                         }
 
                     }); 
                     console.log(args);
+                    console.log(path);
                 });
             }
     });

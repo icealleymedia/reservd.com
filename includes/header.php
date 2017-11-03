@@ -1,7 +1,5 @@
 <?php
 require_once('includes/init.php');
-	// start php session to allow the session golobal variable to be used
-	session_start();
 
 	// check user login if logged in get information if not redirect to login page.
 	
