@@ -1,8 +1,8 @@
 <?php
 $DB_driver = "mysql";
 $DB_host = "localhost";
-$DB_user = "icalley_reservd";
-$DB_pass = "Nattie92";
+$DB_user = "icealley_reservd";
+$DB_pass = "Nattie92$";
 $DB_name = "icealley_cdn";
 
 try
