@@ -1,17 +1,19 @@
 <?php
 class User{
 	private $db;
+	protected $active_hash
 	
 	function __Construct($DB_conn){
 		$this->db = $DB_conn;
+		$this->active_hash = '';
 	}
 
 	public function Register($email, $password, $loginType){
 		$hashed_password = sha1($password);
-		$active_hash = hash("sha256", $this->randomString());
+		$this->active_hash = hash("sha256", $this->randomString());
 		if($loginType === "staff"){
 			
-			$stmt = $this->db->query("INSERT INTO staff (email, passkey, active_hash)VALUES('$email', '$hashed_password', '$active_hash')");
+			$stmt = $this->db->query("INSERT INTO staff (email, passkey, active_hash)VALUES('$email', '$hashed_password', '$this->active_hash')");
 			if($stmt){
 				echo "Success Your Registered";
 			}
