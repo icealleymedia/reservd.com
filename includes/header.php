@@ -1,7 +1,5 @@
 <?php
 require_once('includes/init.php');
-	// start php session to allow the session golobal variable to be used
-	session_start();
 
 	// check user login if logged in get information if not redirect to login page.
 	
@@ -26,7 +24,7 @@ require_once('includes/init.php');
 		<link rel="stylesheet" href="css/application.css" type="text/css" media="screen" />
 	</head>
 	<body>
-		<noscript>Javascript is disabled. Please enable javascript to enhance experience and to take full advantage of the app.</noscript>
+		<noscript>Javascript is disabled. Please enable javascript in your browser to enhance user experience and to take full advantage of the app features.</noscript>
 		<header>
 			<h1>Reservation App</h1>
 		</header>
