@@ -56,3 +56,11 @@ function init(){
 // on window load init function starts
 
 window.onload = init;
+
+// save data in local storage
+
+localStorage.setItem('data', data);
+
+// get data from local storage
+
+var retrievedObject 
