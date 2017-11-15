@@ -29,7 +29,7 @@ class User{
 				<a href="https://cdn.icealleymedia.com/activate.php?activateCode=' . $encryptedHash . '" title="Activate your Reservd Account">Activate your account Now</a>
 				<p>or</p>
 				<p>Copy the url below in to your browsers address field</p>
-				<p>https://cdn.icealleymedia.com/activate.php?activateCode=' . $encryptedHash . '</p>';
+				<p>https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '</p>';
 				// Plain Textail
 				$this->mailer->AltBody = "Plain Text Here";
 				// set user email and ishtml format to true
