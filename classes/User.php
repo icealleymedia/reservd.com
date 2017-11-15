@@ -9,11 +9,11 @@ class User{
 		$this->mailer = '';
 	}
 
-	public function Register($email, $password, $loginType){
+	public function Register($email, $password, $userType){
 		$hashed_password = sha1($password);
 		$this->active_hash = hash("sha256", $this->randomString());
 		$encryptedHash = base64_encode($this->active_hash);
-		if($loginType === "staff"){
+		if($userType === "staff"){
 			
 			$stmt = $this->db->query("INSERT INTO staff (email, passkey, active_hash)VALUES('$email', '$hashed_password', '$this->active_hash')");
 			if($stmt){
@@ -26,7 +26,7 @@ class User{
 				$this->mailer->Body = '<h2>Hello ' . $firstName . '&nbsp;' . $lastName . '</h2>
 				<p>Thankyou for registering for the reservd app to better your business and manage your client bookings to activate your account please follow the link below</p>
 				<br />
-				<a href="https://cdn.icealleymedia.com/activate.php?activateCode=' . $encryptedHash . '" title="Activate your Reservd Account">Activate your account Now</a>
+				<a href="https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '" title="Activate your Reservd Account">Activate your account Now</a>
 				<p>or</p>
 				<p>Copy the url below in to your browsers address field</p>
 				<p>https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '</p>';
