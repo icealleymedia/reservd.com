@@ -1,5 +1,5 @@
 	<? require_once("includes/header.php"); ?>
-	<form action="login.php">
+	<form action="api/authenticate.php">
 		<input type="hidden" name="userType" Value="staff" />
 	  	<div>
 			<label>First Name</label>
