@@ -5,7 +5,6 @@ if($_SERVER["HTTPS"] != "on")
     exit();
 }
 error_reporting(E_ALL);
-session_start();
 
 define("INC_ROOT", dirname(__DIR__) . "/cdn");
 // add required files necessary for app to function
