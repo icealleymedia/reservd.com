@@ -50,7 +50,7 @@ class User{
 			echo "error Registering user";
 		}
 	}
-	function randomString($length = 6) {
+	public function randomString($length = 6) {
 		$str = "";
 		$characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
 		$max = count($characters) - 1;
@@ -59,6 +59,10 @@ class User{
 			$str .= $characters[$rand];
 		}
 		return $str;
+	}
+
+	public function Login($user, $password, $userType){
+		
 	}
 }
 ?>
