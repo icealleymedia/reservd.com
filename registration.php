@@ -1,6 +1,7 @@
 	<? require_once("includes/header.php"); ?>
 	<form action="api/authenticate.php">
 		<input type="hidden" name="userType" Value="staff" />
+		<input type="hidden" name="requestType" Value="register" />
 	  	<div>
 			<label>First Name</label>
 			<input type="text" placeholder="Please enter your first name" name="firstname" required>

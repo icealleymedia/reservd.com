@@ -8,7 +8,7 @@ require_once('includes/init.php');
 
 		}else{
 			// user is not logged in redirect to login page if current page isnt the login page.
-			if($_SERVER["PHP_SELF"] != "/login.php" || $_SERVER["PHP_SELF"] != "/registration.php"){
+			if($_SERVER["PHP_SELF"] != "/login.php"){
 
 				header("location: login.php");
 			}
