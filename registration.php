@@ -1,5 +1,5 @@
 	<? require_once("includes/header.php"); ?>
-	<form action="api/authenticate.php">
+	<form id="register" action="api/authenticate.php" method="post">
 		<input type="hidden" name="userType" Value="staff" />
 		<input type="hidden" name="requestType" Value="register" />
 	  	<div>
