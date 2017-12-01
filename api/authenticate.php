@@ -1,5 +1,4 @@
-<?php
-require_once("../includes/init.php");
+<?php require_once("../includes/init.php");
 $user = new User($DB_conn);
 
 if($_POST["requestType"] == "register"){

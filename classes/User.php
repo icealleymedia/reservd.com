@@ -42,7 +42,7 @@ class User{
 			$encryptedHash = base64_encode($this->active_hash);
 			if($args['userType'] === "staff"){
 				
-				$stmt = $this->db->query("INSERT INTO staff (email, passkey, active_hash)VALUES('$args[email]', '$hashed_password', '$this->active_hash')");
+				$stmt = $this->db->query("INSERT INTO staff (email, passkey, activeHash)VALUES('$args[email]', '$hashed_password', '$this->active_hash')");
 				if($stmt){
 					try{
 					$this->mailer = new myMailer;
@@ -51,10 +51,10 @@ class User{
 					$this->mailer->Body = '<h2>Hello ' . $args['firstname'] . '&nbsp;' . $args['lastname'] . '</h2>
 					<p>Thankyou for registering for the reservd app to better your business and manage your client bookings to activate your account please follow the link below</p>
 					<br />
-					<a href="https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '" title="Activate your Reservd Account">Activate your account Now</a>
+					<a href="https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '&User=' . base64_encode($args['userType']) . '" title="Activate your Reservd Account">Activate your account Now</a>
 					<p>or</p>
 					<p>Copy the url below in to your browsers address field</p>
-					<p>https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '</p>';
+					<p>https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '&User=' . base64_encode($args['userType']) .'</p>';
 					// Plain Textail
 					$this->mailer->AltBody = "Plain Text Here";
 					// set user email and ishtml format to true
@@ -93,6 +93,29 @@ class User{
 
 	public function Login($user, $password, $userType){
 		
+	}
+
+	public function Verify($args){
+		$hashed_password = sha1($args["Password"]);
+		$code = base64_decode($args['activateCode']);
+		if(base64_decode($args['userType']) === "staff"){
+				$stmt = $this->db->query("UPDATE staff SET active = 1 WHERE passkey = '$hashed_password' AND activeHash = '$code' LIMIT 1");
+				if($stmt){
+					echo "Thankyou for Verifying your Account Please Login";
+				}else{
+					echo "Unable to verify";
+				}
+		}else if(base64_decode($args['userType']) === "consumer"){
+			$stmt = $this->db->query("UPDATE consumer SET active=1 WHERE passkey = $hashed_password AND activeHash = $code LIMIT 1");
+			if($stmt){
+				"Thankyou for Verifying your Account Please Login";
+			}else{
+				echo "Unable to verify";
+			}
+		}else{
+			echo "Unable to verify";
+		}
+
 	}
 }
 ?>

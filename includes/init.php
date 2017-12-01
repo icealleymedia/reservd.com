@@ -12,4 +12,5 @@ require_once dirname(INC_ROOT) . "/classes/myMailer.php";
 require_once dirname(INC_ROOT) . "/classes/reservedValidator.php";
 require_once dirname(INC_ROOT) . "/classes/User.php";
 require_once(dirname(INC_ROOT) . "/includes/conn.php");
+session_start();
 ?>

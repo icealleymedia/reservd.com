@@ -1,5 +1,5 @@
 <?php
-require_once('includes/init.php'); ?>
+require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/init.php'); ?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
@@ -7,7 +7,7 @@ require_once('includes/init.php'); ?>
 		<title>?</title>
 		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
-		<link rel="stylesheet" href="css/application.css" type="text/css" media="screen" />
+		<link rel="stylesheet" href="/css/application.css" type="text/css" media="screen" />
 	</head>
 	<body>
 		<noscript>Javascript is disabled. Please enable javascript in your browser to enhance user experience and to take full advantage of the app features.</noscript>
