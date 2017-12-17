@@ -18,7 +18,11 @@ class myMailer extends PHPMailer{
 		$this->Username = "no-reply@icealleymedia.com";
 		$this->replyTo = "info@icealleymedia.com";
 		$this->Password = "Nattie92$";
-		$this->SMTPDebug = 2;
+		//Enable SMTP debugging
+		// 0 = off (for production use)
+		// 1 = client messages
+		// 2 = client and server messages
+		$this->SMTPDebug = 0;
 	}
 	public function send(){
         $r = parent::send();

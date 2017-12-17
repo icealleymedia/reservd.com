@@ -8,7 +8,7 @@
 	</div>
 	<div>
 		<label>Password</label>
-		<span><i class="fa fa-lock fa-lg"></i><input type="password" name="loginKey" placeholder="Password" required /></span>
+		<span><i class="fa fa-lock fa-lg"></i><input type="password" name="loginPass" placeholder="Password" required /></span>
 		<button id="showText"><i class="fa fa-eye" aria-hidden="true" title="show password in normal text to confirm accuracy"></i><span>ShowText</span></button>
 	</div>
 	<div>
@@ -21,7 +21,7 @@
 		</span>
 	</div>
 	<div>
-		<input type="submit" value="Log Me In" />
+		<button type="submit" class="loginbutton">Login</button>
 	</div>
 </form>
 <div class="loader">

@@ -8,9 +8,10 @@ error_reporting(E_ALL);
 
 define("INC_ROOT", dirname(__DIR__) . "/cdn");
 // add required files necessary for app to function
+require_once(dirname(INC_ROOT) . "/includes/conn.php");
+require_once dirname(INC_ROOT) . "/classes/response.php";
 require_once dirname(INC_ROOT) . "/classes/myMailer.php";
 require_once dirname(INC_ROOT) . "/classes/reservedValidator.php";
 require_once dirname(INC_ROOT) . "/classes/User.php";
-require_once(dirname(INC_ROOT) . "/includes/conn.php");
 session_start();
 ?>

@@ -1,4 +1,4 @@
-	<? require_once("includes/header.php"); ?>
+<? require_once("includes/header.php"); ?>
 	<form id="register" action="api/authenticate.php" method="post">
 		<input type="hidden" name="userType" Value="staff" />
 		<input type="hidden" name="requestType" Value="register" />
@@ -27,4 +27,4 @@
 		  <button type="submit" class="signupbutton">Sign Up</button>
 		</div>
 	</form>
-	<? require_once("includes/footer.php"); ?>
+<? require_once("includes/footer.php"); ?>

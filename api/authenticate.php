@@ -4,7 +4,7 @@ $user = new User($DB_conn);
 if($_POST["requestType"] == "register"){
 	$user->Register($_POST);
 }else if($_POST["requestType"] == "login"){
-	$user->Login($_POST['loginName'], $_POST['loginKey'], $_POST['userType']);
+	$user->Login($_POST);
 }else{
 	echo "ERROR: Unable to process request please contact system administrator.";
 }
