@@ -137,7 +137,8 @@ class User{
 									'redirectUrl' => '/dashboard.php',
 									'data' => [
 										'is_good' => 1,
-										'message' => 'Login Successful'
+										'message' => 'Login Successful',
+										'id' => $id
 									]
 								];
 

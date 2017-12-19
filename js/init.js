@@ -45,6 +45,7 @@ function init(){
                     var user = $('input[name=loginName').val();
                     var pass = $('input[name=loginPass').val();
                     var loginLevel = $('input[name=userType]').val();
+                    var requestType = $('input[name=requestType]').val();
                     var path = $(this).attr("action");
 
                     var args = {
@@ -63,31 +64,24 @@ function init(){
                         url: path,
                         type: "POST",
                         dataType: "json",
-                        data: 'userType=' + loginLevel + '&loginName=' + user + '&loginPass=' + pass,
+                        data: 'userType=' + loginLevel + '&requestType=' + requestType + '&loginName=' + user + '&loginPass=' + pass,
                         success: function(data){
-                            // if request is successful redirect to dashboard or home page
-                           /* function loginRedirect(){
-                                window.location.replace("home.php");
-                            }
-                            setTimout("loginRedirect()", 500000); */
-
-                            console.log("database Connection successful");
-
-                            console.log(this.data);
-
+                            window.location = "/dashboard.php";
                         },
-                        error: function(data){
+                        error: function(x,s,e){
                             // there is an error try logging in using localStorage if not display error message
 
                             console.log("no database connection found");
-                            console.log(this.data);
+                            console.log(x);
+                            console.log(s);
+                            console.log(e);
 
                         }
 
                     }); 
-                    console.log(args);
-                    console.log(path);
                 });
+            }else{
+
             }
     });
 
