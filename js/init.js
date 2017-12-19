@@ -43,26 +43,27 @@ function init(){
                     event.preventDefault();
                     alert("login attempt");
                     var user = $('input[name=loginName').val();
-                    var pass = $('input[name=loginKey').val();
-                    var loginLevel = $('input[name=loginLevel]').val();
+                    var pass = $('input[name=loginPass').val();
+                    var loginLevel = $('input[name=userType]').val();
                     var path = $(this).attr("action");
 
                     var args = {
-                        loginType: loginLevel,
-                        username: user,
-                        password: pass
+                        userType: loginLevel,
+                        loginName: user,
+                        loginPass: pass
                     };
 
                     alert("your Username is " + user + " and your password is " + pass + " thankyou for logging in");
 
-                    if($("input[name=remember").is(":checked")){
+                    if($("input[name=remember]").is(":checked")){
                         var remember = true;
                         args["remember"] = true;
                     }
                     $.ajax({
                         url: path,
+                        type: "POST",
                         dataType: "json",
-                        data: args,
+                        data: 'userType=' + loginLevel + '&loginName=' + user + '&loginPass=' + pass,
                         success: function(data){
                             // if request is successful redirect to dashboard or home page
                            /* function loginRedirect(){
@@ -98,8 +99,8 @@ window.onload = init;
 
 // save data in local storage
 
-localStorage.setItem('data', data);
+// --- localStorage.setItem('data', data); --- /
 
 // get data from local storage
 
-var retrievedObject 
+// --- var retrievedObject 

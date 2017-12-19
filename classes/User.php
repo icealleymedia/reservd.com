@@ -91,7 +91,6 @@ class User{
 		return $str;
 	}
 	public function Login($args){
-		print_r($args);
 	if(strpos("$args[loginName]", '@') !== false){
 			$loginRules = [
 				'loginName' => [
@@ -117,7 +116,7 @@ class User{
 		if($loginValid->isSuccess() == true){
 			$hashed_password = sha1($args['loginPass']);
 			if($args['userType'] === "staff"){
-				$stmt = $this->db->query("SELECT id FROM staff WHERE email OR username='$args[loginName]' AND passkey='$hashed_password' LIMIT 1");
+				$stmt = $this->db->query("SELECT * FROM staff WHERE username OR email = '$args[loginName]' AND passkey='$hashed_password' AND active = 1 LIMIT 1");
 				if($stmt){
 					$count = $stmt->rowCount();
 					// create a new response for login to respond in json or html
@@ -135,9 +134,10 @@ class User{
 							$responseRules = [
 									'status' => 200,
 									'redirect' => true,
-									'redirectUrl' => 'dashboard.php',
+									'redirectUrl' => '/dashboard.php',
 									'data' => [
-										'success' => true
+										'is_good' => 1,
+										'message' => 'Login Successful'
 									]
 								];
 
@@ -146,13 +146,11 @@ class User{
 						$responseRules = [
 							'status' => 400,
 							'data' => [
-								'success' => false,
+								'is_good' => 0,
 								'message' => 'Invalid Username and Password'
 							]
 						];
 						$response->getResponse($responseRules);
-
-						print_r($response->data);
 					}
 				}
 			}else if($args['userType'] === "consumer"){
@@ -187,6 +185,9 @@ class User{
 			echo "Unable to verify";
 		}
 
+	}
+	public function getUser($id){
+		echo "welcome user " . base64_decode($id);
 	}
 }
 ?>
