@@ -25,7 +25,9 @@ Loader.prototype = {
         body.appendChild(s);
     }
 }
-
+function submitRegistration (){
+        console.log("Registration Attempt");
+}
 // function to bring in all files needed for web app to run and firing the first function to build application dynamically
 function init(){
 
@@ -34,6 +36,10 @@ function init(){
     coreScripts.require(["https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js",
         "https://use.fontawesome.com/1bf1738307.js"],
         function(){
+            $('#register').submit(function(e){
+                e.preventDefault();
+                submitRegistration();
+            });
             // Callback function
             // check to see if current page is login page
             var currentPage = window.location.href;
@@ -54,7 +60,7 @@ function init(){
                         loginPass: pass
                     };
 
-                    alert("your Username is " + user + " and your password is " + pass + " thankyou for logging in");
+                    console.log("your Username is " + user + " and your password is " + pass + " thankyou for logging in");
 
                     if($("input[name=remember]").is(":checked")){
                         var remember = true;
