@@ -25,8 +25,38 @@ Loader.prototype = {
         body.appendChild(s);
     }
 }
-function submitRegistration (){
+function submitRegistration (form){
         console.log("Registration Attempt");
+        var firstname = $('input[name=firstname').val();
+        var lastname = $('input[name=lastname').val();
+        var email = $('input[name=email').val();
+        var password = $('input[name=password').val();
+        var passwordrepeat = $('input[name=passwordrepeat').val();
+        var loginLevel = $('input[name=userType').val();
+        var requestType = $('input[name=requestType').val();
+        var path = $(form).attr("action");
+        console.log(path);
+
+        $.ajax({
+            url: path,
+            type: "POST",
+            dataType: "json",
+            data: args,
+            success: function(data){
+                console.log("registration successful");
+                //window.location = "/dashboard.php";
+            },
+            error: function(x,s,e){
+                // there is an error try logging in using localStorage if not display error message
+                console.log("no database connection found");
+                console.log(x);
+                console.log(s);
+                console.log(e);
+
+            }
+
+        });
+
 }
 // function to bring in all files needed for web app to run and firing the first function to build application dynamically
 function init(){
@@ -38,7 +68,8 @@ function init(){
         function(){
             $('#register').submit(function(e){
                 e.preventDefault();
-                submitRegistration();
+                var thisForm = $(this);
+                submitRegistration(thisForm);
             });
             // Callback function
             // check to see if current page is login page
@@ -54,23 +85,19 @@ function init(){
                     var requestType = $('input[name=requestType]').val();
                     var path = $(this).attr("action");
 
-                    var args = {
-                        userType: loginLevel,
-                        loginName: user,
-                        loginPass: pass
-                    };
+                    var args = 'userType=' + loginLevel + '&requestType=' + requestType + '&loginName=' + user + '&loginPass=' + pass;
 
                     console.log("your Username is " + user + " and your password is " + pass + " thankyou for logging in");
 
                     if($("input[name=remember]").is(":checked")){
                         var remember = true;
-                        args["remember"] = true;
+                        args += '&remember' + remember;
                     }
                     $.ajax({
                         url: path,
                         type: "POST",
                         dataType: "json",
-                        data: 'userType=' + loginLevel + '&requestType=' + requestType + '&loginName=' + user + '&loginPass=' + pass,
+                        data: args,
                         success: function(data){
                             window.location = "/dashboard.php";
                         },

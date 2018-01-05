@@ -11,7 +11,7 @@ class response{
 		$this->redirectUrl = ((isset($args['redirectUrl']))) ? $args['redirectUrl'] : '404.php';
 		$this->data = ((isset($args['data']))) ? $args['data'] : 'This is your data';
 
-		if(DATA_REQUEST === 'json'){
+		if($this->requestType === 'json'){
 			header('Content-type: application/json', true, $this->statusCode);
 			echo json_encode($this->data); // Data to be encoded and sent back to requester through json
 		}else{

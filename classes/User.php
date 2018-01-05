@@ -10,7 +10,7 @@ class User{
 	}
 
 	public function Register($args){ /* old args:  $email, $password, $userType */
-
+		$response = new response(DATA_REQUEST);
 		$registerRules = [
 			'firstname' => [
 				'required',
@@ -63,20 +63,55 @@ class User{
 
 					// send email
 					$this->mailer->Send();
-					echo "Registration Successful Mail is on its way";
+					$responseRules = [
+									'status' => 200,
+									'redirect' => true,
+									'redirectUrl' => '/dashboard.php',
+									'data' => [
+										'is_good' => 1,
+										'message' => 'Registration Successful',a
+									]
+								];
+
+							$response->getResponse($responseRules);
 					}catch(Exception $e){
 						echo 'Message could not be sent.';
-	    				echo 'Mailer Error: ' . $this->mailer->ErrorInfo;
+	    				$errors = $this->mailer->ErrorInfo;
+	    				$responseRules = [
+							'status' => 400,
+							'data' => [
+								'is_good' => 0,
+								'message' => 'Invalid email may have been provided if this is the correct email please Contact Support at Support@spotterapp.com',
+								'errors' => $errors
+							]
+						];
+						$response->getResponse($responseRules);
 					}
 						
 					
 				}
 			}else{
-				echo "error Registering user";
+				$responseRules = [
+							'status' => 400,
+							'data' => [
+								'is_good' => 0,
+								'message' => 'Invalid Username and Password'
+							]
+						];
+						$response->getResponse($responseRules);
 			}
-		}else {
+		}else{
 		    echo "validation not ok";
-		    var_dump($registerValid->getErrors());
+		    $errors = $registerValid->getErrors();
+		    $responseRules = [
+							'status' => 400,
+							'data' => [
+								'is_good' => 0,
+								'message' => 'Information Missing',
+								'errors' => $errors
+							]
+						];
+						$response->getResponse($responseRules);
 		}
 		print_r($args);
 	}
@@ -90,6 +125,8 @@ class User{
 		}
 		return $str;
 	}
+
+////////// method to log user in to application /////////////
 	public function Login($args){
 	if(strpos("$args[loginName]", '@') !== false){
 			$loginRules = [
@@ -120,7 +157,7 @@ class User{
 				if($stmt){
 					$count = $stmt->rowCount();
 					// create a new response for login to respond in json or html
-					$response = new response('html');
+					$response = new response(DATA_REQUEST);
 					$row = $stmt->fetch(PDO::FETCH_ASSOC);
 					if($count == 1 && !empty($row)){
 						$id = base64_encode($row['id']);
