@@ -69,7 +69,7 @@ class User{
 									'redirectUrl' => '/dashboard.php',
 									'data' => [
 										'is_good' => 1,
-										'message' => 'Registration Successful',a
+										'message' => 'Registration Successful'
 									]
 								];
 
@@ -91,14 +91,53 @@ class User{
 					
 				}
 			}else{
-				$responseRules = [
+				// if not staff registration register consumer
+				$stmt = $this->db->query("INSERT INTO users(email, passkey, activeHash)VALUES('$args[email]', '$hashed_password', '$this->active_hash')");
+				if($stmt){
+					try{
+					$this->mailer = new myMailer;
+					$this->mailer->Subject = "Welcome activate your Spotter app account";
+					// html email 
+					$this->mailer->Body = '<h2>Hello ' . $args['firstname'] . '&nbsp;' . $args['lastname'] . '</h2>
+					<p>Thankyou for registering for the spotter app to better your business and manage your client bookings to activate your account please follow the link below</p>
+					<br />
+					<a href="https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '&User=' . base64_encode($args['userType']) . '" title="Activate your Reservd Account">Activate your account Now</a>
+					<p>or</p>
+					<p>Copy the url below in to your browsers address field</p>
+					<p>https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '&User=' . base64_encode($args['userType']) .'</p>';
+					// Plain Textail
+					$this->mailer->AltBody = "Plain Text Here";
+					// set user email and ishtml format to true
+					$this->mailer->addAddress($args['email']);
+					$this->mailer->isHTML(true);
+
+					// send email
+					$this->mailer->Send();
+					$responseRules = [
+									'status' => 200,
+									'redirect' => true,
+									'redirectUrl' => '/dashboard.php',
+									'data' => [
+										'is_good' => 1,
+										'message' => 'Registration Successful',
+									]
+								];
+
+							$response->getResponse($responseRules);
+
+					}catch(Exception $e){
+						echo 'Message could not be sent.';
+	    				echo $this->mailer->ErrorInfo;
+						/* $responseRules = [
 							'status' => 400,
 							'data' => [
 								'is_good' => 0,
 								'message' => 'Invalid Username and Password'
 							]
 						];
-						$response->getResponse($responseRules);
+						$response->getResponse($responseRules); */
+					}
+				}
 			}
 		}else{
 		    echo "validation not ok";

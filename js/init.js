@@ -26,36 +26,38 @@ Loader.prototype = {
     }
 }
 function submitRegistration (form){
-        console.log("Registration Attempt");
-        var firstname = $('input[name=firstname').val();
-        var lastname = $('input[name=lastname').val();
-        var email = $('input[name=email').val();
-        var password = $('input[name=password').val();
-        var passwordrepeat = $('input[name=passwordrepeat').val();
-        var loginLevel = $('input[name=userType').val();
-        var requestType = $('input[name=requestType').val();
-        var path = $(form).attr("action");
-        console.log(path);
+    console.log("Registration Attempt");
+    var firstname = $('input[name=firstname').val();
+    var lastname = $('input[name=lastname').val();
+    var email = $('input[name=email').val();
+    var password = $('input[name=password').val();
+    var passwordrepeat = $('input[name=passwordrepeat').val();
+    var loginLevel = $('input[name=userType').val();
+    var requestType = $('input[name=requestType').val();
+    var path = $(form).attr("action");
+    console.log(path);
 
-        $.ajax({
-            url: path,
-            type: "POST",
-            dataType: "json",
-            data: args,
-            success: function(data){
-                console.log("registration successful");
-                //window.location = "/dashboard.php";
-            },
-            error: function(x,s,e){
-                // there is an error try logging in using localStorage if not display error message
-                console.log("no database connection found");
-                console.log(x);
-                console.log(s);
-                console.log(e);
+    var args = 'userType=' + loginLevel + '&requestType=' + requestType + '&firstname=' + firstname + '&lastname=' + lastname+ '&email=' + email + '&password=' + password + '&passwordrepeat=' + passwordrepeat;
+    window.confirm(args);
+    $.ajax({
+        url: path,
+        type: "POST",
+        dataType: "json",
+        data: args,
+        success: function(data){
+            console.log("registration successful");
+            //window.location = "/dashboard.php";
+        },
+        error: function(x,s,e){
+            // there is an error try logging in using localStorage if not display error message
+            console.log("no database connection found");
+            console.log(x);
+            console.log(s);
+            console.log(e);
 
-            }
+        }
 
-        });
+    });
 
 }
 // function to bring in all files needed for web app to run and firing the first function to build application dynamically
