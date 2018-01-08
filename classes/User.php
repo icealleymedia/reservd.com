@@ -126,22 +126,22 @@ class User{
 							$response->getResponse($responseRules);
 
 					}catch(Exception $e){
-						echo 'Message could not be sent.';
-	    				echo $this->mailer->ErrorInfo;
-						/* $responseRules = [
+						
+	    				$responseError = json_encode($this->mailer->ErrorInfo);
+						$responseRules = [
 							'status' => 400,
 							'data' => [
 								'is_good' => 0,
-								'message' => 'Invalid Username and Password'
+								'message' => 'Invalid email may have been provided if this is the correct email please Contact Support at Support@spotterapp.com',
+								'error' => $responseError
 							]
 						];
-						$response->getResponse($responseRules); */
+						$response->getResponse($responseRules);
 					}
 				}
 			}
 		}else{
-		    echo "validation not ok";
-		    $errors = $registerValid->getErrors();
+		    $errors = json_encode($registerValid->getErrors());
 		    $responseRules = [
 							'status' => 400,
 							'data' => [

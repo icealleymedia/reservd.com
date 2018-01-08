@@ -16,7 +16,7 @@
 		</div>
 		<div>
 			<label>Password</label>
-			<input type="password" placeholder="Please enter a secure password" name="password" required>
+			<input id="password" type="password" placeholder="Please enter a secure password" name="password" required>
 		</div>
 		<div>
 			<label>Re Enter Password</label>
