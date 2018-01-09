@@ -1,13 +1,5 @@
-<!doctype html>
-<html>
-<head>
-<meta charset="utf-8">
-<title>Business Setup Form</title>
-</head>
-
-<body>
 <!-- Form Starts Here -->
-	<form id="businessform">
+	<form id="businessform" action="api/authenticate.php" method="post">
 <!-- Progress Bar -->	
 	<ul id="bar">		
 		<li class="active">Business Setup</li>
@@ -63,14 +55,51 @@
 	<fieldset>
 		<h2 class="field-title">How would you like to pay us?</h2>
 			<h3 class="field-subtitle"> You are almost done!</h3>
-				<input type="text" name="business name" placeholder="Enter your business name" />
-				<input type="url" name="url" placeholder="Enter your company's website" />
+			<!-- Payment Type -->
+			<ul class="payment-type-list">
+				<li>
+					<label>Paypal</label>
+					<input type="radio" name="payment-method" value="pp">
+				</li>
+				<li>
+					<label>Amex</label>
+					<input type="radio" name="payment-method" value="ae">
+				</li>
+				<li>
+					<label>Mastercard</label>
+					<input type="radio" name="payment-method" value="mc">
+				</li>
+				<li>
+					<label>Visa</label>
+					<input type="radio" name="payment-method" value="vs">
+				</li>
+				<li>
+					<label>Discover Card</label>
+					<input type="radio" name="payment-method" value="dc">
+				</li>
+			</ul>
+				<input type="text" name="cc-number" placeholder="Card Number" />
+				<!-- expiry date input -->
+				<label>Expiry</label>
+				<div>
+					<span>
+						<select id="expMonth" name="expMonth">
+							<option value="00">MM</option>
+						</select>
+					</span>
+					<span>
+						&#47;
+					</span>
+					<span>
+						<select id="expYear" name="expYear">
+							<option value="00">YY</option>
+						</select>
+					</span>
+				</div>
 				<input type="email" name="email" placeholder="Hey! What's your email?" />
-				<input type="text" name="phone" placeholder="Ring..Ring.." />
+				<input type="text" name="cvv" placeholder="Enter 3-digit numeric security code" />
 				<textarea name="address" placeholder="Where are you located?"></textarea>
 			<input type="button" name="next" class="next-action-button" value="Next"/>
 	</fieldset>		
 
 	</form>
-</body>
-</html>
