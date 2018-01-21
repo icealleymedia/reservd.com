@@ -47,7 +47,7 @@
 
 	<!--Plans-->
 		<fieldset>
-			<h2 class="field-title">You are half way done!</h2>
+			<legend class="field-title">You are half way done!</legend>
 				<h3 class="field-subtitle">Select your preferred plan</h3>
 					<input type="text" name="business name" placeholder="Enter your business name" />
 				<input type="button" name="next" class="next-action-button" value="Next"/>

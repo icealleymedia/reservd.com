@@ -19,7 +19,7 @@
 ?>
 <a href="#" title="">Business Settings</a>
 <a href="#" title="">Appointment Ledger</a>
-<a href="#" title="">Staff Management</a>
+<a href="staff-managment.php" title="Manage your staff">Staff Management</a>
 <a href="#" title="">Customer Relations</a>
 <a href="#" title="">Profile Management</a>
 <a href="#" title="">Training Academy</a>
