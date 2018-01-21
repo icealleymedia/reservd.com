@@ -1,6 +1,8 @@
 <? require_once("includes/header.php"); ?>
 <!-- Form Starts Here -->
 	<form id="businessform" action="api/authenticate.php" method="post">
+<!-- Account Identification -->
+		<input type="hidden" name="userid" value="" />
 <!-- Progress Bar -->	
 		<ul id="progress-bar">		
 			<li class="active">Business Setup</li>
@@ -12,7 +14,7 @@
 	<!-- Fields -->
 	<!--Business Setup-->
 		<fieldset>
-			<h2 class="field-title">Let's get started!</h2>
+			<legend class="field-title">Let's get started!</legend>
 				<h3 class="field-subtitle">Provide your business information</h3>
 					<input type="text" name="business name" placeholder="Enter your business name" />
 					<input type="url" name="url" placeholder="Enter your company's website" />
@@ -25,7 +27,7 @@
 			
 	<!--Services-->
 		<fieldset>
-			<h2 class="field-title">We got you covered here!</h2>
+			<legend class="field-title">We got you covered here!</legend>
 				<h3 class="field-subtitle">Choose your industry</h3>
 					<input type="text" name="service name" placeholder="Enter your primary service name" />
 					<input list="industries" name="industries" />
@@ -52,9 +54,9 @@
 		</fieldset>		
 
 	<!--Payment Informaiton-->
-		<fieldset>You are almost done!
-			<h2 class="field-title">You are almost done!</h2>
-				<h3 class="field-subtitle">How would you like to pay for this service?</h3>
+		<fieldset>
+			<legend class="field-title">You are almost done!</legend>
+			<h3 class="field-subtitle">How would you like to pay for this service?</h3>
 				<!-- Payment Type -->
 				<ul class="payment-type-list">
 					<li>
