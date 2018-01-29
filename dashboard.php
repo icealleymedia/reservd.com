@@ -19,7 +19,7 @@
 ?>
 <a href="settings.php" title=""><i class="fa fa-sliders"></i>Business Settings</a>
 <a href="app-ledger.php" title=""><i class="fa fa-calendar"></i>Appointment Ledger</a>
-<a href="staff-managment.php" title="Manage your staff"<i class="fa fa-users"></i>Staff Management</a>
+<a href="staff-managment.php" title="Manage your staff"><i class="fa fa-users"></i>Staff Management</a>
 <a href="customer-relations.php" title=""><i class="fa fa-comments"></i>Customer Relations</a>
 <a href="profile.php" title=""><i class="fa fa-pencil-square"></i>Profile Management</a>
 <a href="training-academy.php" title=""><i class="fa fa-graduation-cap"></i>Training Academy</a>
