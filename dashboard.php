@@ -1,6 +1,6 @@
 <? require_once("includes/header.php");
 // check user login if logged in get information if not redirect to login page.
-		if(isset($_SESSION["id"]) || isset($_COOKIE["idx"])){
+		/* if(isset($_SESSION["id"]) || isset($_COOKIE["idx"])){
 			// user is logged in query database to get information.
 			if($_SESSION['id'] != null){
 				$id = $_SESSION['id'];
@@ -15,7 +15,7 @@
 				$url = '/login.php';
 				echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
 			}
-		} 
+		} */
 ?>
 <a href="settings.php" title=""><i class="fa fa-sliders"></i>Business Settings</a>
 <a href="app-ledger.php" title=""><i class="fa fa-calendar"></i>Appointment Ledger</a>

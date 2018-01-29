@@ -263,8 +263,13 @@ class User{
 		}
 
 	}
-	public function getUser($id){
-		echo "welcome user " . base64_decode($id);
+	public function getUser($args){
+		$stmt = $this->db->prepare("SELECT * FROM staff WHERE id=$args");
+		$stmt->execute();
+		$user = $stmt->fetchObject();
+		return $user;
+		// echo "welcome user " . base64_decode($id);
+
 	}
 }
 ?>
