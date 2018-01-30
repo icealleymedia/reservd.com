@@ -2,11 +2,14 @@
 class User{
 	private $db;
 	protected $active_hash;
+	public $data;
+
 	
 	function __Construct($DB_conn){
 		$this->db = $DB_conn;
 		$this->active_hash = '';
 		$this->mailer = '';
+		$this->data = '';
 	}
 
 	public function Register($args){ /* old args:  $email, $password, $userType */
@@ -264,11 +267,40 @@ class User{
 
 	}
 	public function getUser($args){
-		$stmt = $this->db->prepare("SELECT * FROM staff WHERE id=$args");
-		$stmt->execute();
-		$user = $stmt->fetchObject();
-		return $user;
-		// echo "welcome user " . base64_decode($id);
+		$userid = base64_decode($args);
+		$stmt = $this->db->query("SELECT * FROM staff INNER JOIN staff_profile ON staff.id = staff_profile.staff_id WHERE id=$userid");
+		$count = $stmt->rowCount();
+		$response = new response(DATA_REQUEST);
+					$row = $stmt->fetch(PDO::FETCH_ASSOC);
+					if($count <= 1 && !empty($row)){
+						$this->data = [
+							"id" => $row["id"],
+							"email" => $row["email"],
+							"username" => $row["username"]
+						];
+							$responseRules = [
+									'status' => 200,
+									'redirect' => true,
+									'redirectUrl' => '/dashboard.php',
+									'data' => $this->data
+								];
+
+							$response->getResponse($responseRules);
+					}else{
+						$responseRules = [
+							'status' => 400,
+							'redirect' => true,
+							'redirectUrl' => '/login.php',
+							'data' => [
+								'is_good' => 0,
+								'message' => 'Oops seems we are having difficulty finding what you need'
+							]
+						];
+						$response->getResponse($responseRules);
+					}
+
+	}
+	public function UpdateUser($args){
 
 	}
 }

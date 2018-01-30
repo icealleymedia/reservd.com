@@ -14,20 +14,16 @@ class response{
 		if($this->requestType === 'json'){
 			header('Content-type: application/json', true, $this->statusCode);
 			echo json_encode($this->data); // Data to be encoded and sent back to requester through json
-		}/*else{
+		}else{
 			if($this->redirect === true){
 				if($this->redirectUrl !== ''){
-					header('location:' . dirname(THIS_DOMAIN) . $this->redirectUrl);
+					//header('location:' . dirname(THIS_DOMAIN) . $this->redirectUrl);
 				}else{
 					echo "error no redirect url found";
 				}
 			}
-			if(is_array($this->data)){
-				print_r($this->data);
-			}else{
-				echo $this->data;
-			}
-		} */
+			return $this->data;
+		}
 
 	}
 
