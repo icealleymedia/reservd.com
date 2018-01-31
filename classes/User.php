@@ -268,7 +268,7 @@ class User{
 	}
 	public function getUser($args){
 		$userid = base64_decode($args);
-		$stmt = $this->db->query("SELECT * FROM staff INNER JOIN staff_profile ON staff.id = staff_profile.staff_id WHERE id=$userid");
+		$stmt = $this->db->query("SELECT * FROM staff INNER JOIN staff_profile ON staff.id = staff_profile.staff_id WHERE staff.id = $userid");
 		$count = $stmt->rowCount();
 		$response = new response(DATA_REQUEST);
 					$row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -276,7 +276,9 @@ class User{
 						$this->data = [
 							"id" => $row["id"],
 							"email" => $row["email"],
-							"username" => $row["username"]
+							"username" => $row["username"],
+							"firstname" => $row["firstname"],
+							"lastname" => $row["lastname"]
 						];
 							$responseRules = [
 									'status' => 200,
