@@ -1,20 +1,29 @@
 <? require_once("includes/header.php"); ?>
 <h2>Staff Management</h2>
-<!-- hidden add staff form that will populate in shadow box when add staff button clicked -->
-<!-- search field -->
-<div class="employeerecord">Find your team</div>
+<!-- staff list and online status with editing capabilities -->
+<div id="activestaffList">
+	<h3>Active Staff Members</h3>
+</div>
+<!-- display past staff members and information -->
+	<div id="staffProfile"> <!-- this div hidden until staff member selected then it is populated and becomes visible -->
+	</div>
+	<div id="staffHistory">
+		<h3>Inactive Staff Members</h3>
+	</div>
+	<!-- search field -->
+<h3>Find your team</h3>
 <form id="signup" method="POST">
 	<div class="lookup">
 	<h4>Find a profile</h4>
    		<input type="text" class="searchValue" placeholder="Lookup by phone or email!">
 	  	<button type="submit" class="searchButton">Search</button>
-   </div>
-</form>
-<!-- add new staff member -->
-		<button id="add-staff">Create employee record</button>
-<!-- staff list and online status with editing capabilities -->
-	<div id="activestaffList">
+
+	  	<button id="add-staff">Create employee record</button> <!-- this button will be hidden until search returns no results --> 
 	</div>
+
+</form> <!-- this form hidden until create employee record is clicked then becomes visible --> 
+<!-- add new staff member -->
+<!-- hidden add staff form that will populate in shadow box create employee record clicked -->
 		<form id="addemploy">
 	<div id="profilesetup">
 		<input type="radio" name="employeetype" value="full-time">Full-Time<br>
@@ -55,14 +64,4 @@
 	  <button type="reset" class="cleardata">Clear</button>
 	</div>
 </form>
-
-
-		<h3>Active Staff Members</h3>
-	</div>
-<!-- display past staff members and information -->
-	<div id="staffProfile">
-	</div>
-	<div id="staffHistory">
-		<h3>Inactive Staff Members</h3>
-	</div>
 <? require_once("includes/footer.php"); ?>

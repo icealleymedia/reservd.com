@@ -41,7 +41,7 @@ class User{
 		$registerValid = MyValidator::validate($args, $registerRules);
 		if ($registerValid->isSuccess() == true) {
 			$hashed_password = sha1($args['password']);
-			$this->active_hash = hash("sha256", $this->randomString());
+			$this->active_hash = hash("sha256", $this->randomString(6));
 			$encryptedHash = base64_encode($this->active_hash);
 			if($args['userType'] === "staff"){
 				
@@ -157,7 +157,7 @@ class User{
 		}
 		print_r($args);
 	}
-	public function randomString($length = 6) {
+	public function randomString($length) {
 		$str = "";
 		$characters = array_merge(range('A','Z'), range('a','z'), range('0','9'));
 		$max = count($characters) - 1;
@@ -205,7 +205,10 @@ class User{
 						$id = base64_encode($row['id']);
 						// if remember me is set set idx cookie
 							if(isset($args['remember'])){
-								setcookie('idx', $id, time() + 60 * 60 * 24 * 30, "/"); // 86400 = 1 day
+								$rememberIdentifier = $this->randomString(128);
+								$rememberToken = $this->randomString(128);
+								
+
 						// if not set a session variable of 'id'
 							}else{
 								$_SESSION['id'] = $id;
@@ -243,7 +246,24 @@ class User{
 		    var_dump($loginValid->getErrors());
 		}
 	}
-
+	public function Logout(){
+		$response = new response(DATA_REQUEST);
+		if(isset($_COOKIE['idx'])){
+			unset($_COOKIE['idx']);
+    		setcookie('idx', '', time() - 3600, '/'); // empty value and old timestamp
+		}
+		session_destroy();
+		$responseRules = [
+			'status' => 200,
+			'redirect' => true,
+			'redirectUrl' => '/index.php',
+			'data' =>[
+				'is_good' => 1,
+				'message' => 'Logout Successful'
+			]
+		];
+		$response-getResponse($responseRules);
+	}
 	public function Verify($args){
 		$hashed_password = sha1($args["Password"]);
 		$code = base64_decode($args['activateCode']);
@@ -302,6 +322,18 @@ class User{
 					}
 
 	}
+	public function updateRememberCredentials($userType, $id, $identifier, $token){
+		$thisToken = hash($token);
+		$stmt = $this->db->query("UPDATE $userType SET remember_identifier = $identifier, remember_token = $thisToken WHERE id = $id");
+		if($stmt){
+			setcookie('idx', $rememberIdentifier . '___' . $token, time() + 60 * 60 * 24 * 30, "/"); // 86400 = 1 day
+		}
+
+	}
+	public function removeRememberCredentials(){
+
+	}
+
 	public function UpdateUser($args){
 
 	}
