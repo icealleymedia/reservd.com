@@ -262,7 +262,7 @@ class User{
 				'message' => 'Logout Successful'
 			]
 		];
-		$response-getResponse($responseRules);
+		$response->getResponse($responseRules);
 	}
 	public function Verify($args){
 		$hashed_password = sha1($args["Password"]);

@@ -4,7 +4,7 @@ if($_POST["requestType"] == "register"){
 	$user->Register($_POST);
 }else if($_POST["requestType"] == "login"){
 	$user->Login($_POST);
-}else if($_POST["requestType"] == "logout"){
+}else if($_GET["requestType"] == "logout"){
 	$user->Logout();
 }else{
 	echo "ERROR: Unable to process request please contact system administrator.";
