@@ -12,6 +12,12 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/init.php'); ?>
 			$user->getUser($id);
 		}else{
 			// user is not logged in redirect to login page if current page isnt the login page.
+			if($_SERVER["PHP_SELF"] != "/login.php"){
+				$url = '/login.php';
+				echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
+			}
+		}
+		
 		if($_SERVER["PHP_SELF"] != "/login.php" || $_SERVER["PHP_SELF"] != "/registration.php"){
 				$url = '/login.php';
 				echo '<META HTTP-EQUIV="refresh" content="0;URL=' .$url. '">';
