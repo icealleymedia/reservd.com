@@ -20,13 +20,19 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/init.php'); ?>
 				echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
 				}
 			}
-		} 
+		}
+		
+		if($_SERVER["PHP_SELF"] != "/login.php" || $_SERVER["PHP_SELF"] != "/registration.php"){
+				$url = '/login.php';
+				echo '<META HTTP-EQUIV="refresh" content="0;URL=' .$url. '">';
+			}
+		
 		?>
 <!DOCTYPE html>
 <html lang="en">
 	<head>
 		<meta charset="UTF-8">
-		<title>Spotter - Business &amp; Appointment Managment Software</title>
+		<title>Spotter - Business &amp; Appointment Management Software</title>
 		<link rel="icon" href="favicon.ico" type="image/x-icon"/>
 		<link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
 		<link rel="stylesheet" href="/css/application.css" type="text/css" media="screen" />
