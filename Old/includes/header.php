@@ -16,6 +16,9 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/init.php'); ?>
 				if($_SERVER["PHP_SELF"] != "/registration.php"){
 					$url = '/login.php';
 					echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
+				}else{
+					$url = '/login.php';
+					echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
 				}
 			}
 		}
