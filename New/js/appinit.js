@@ -8,6 +8,6 @@ function init(){
 window.onload = init();
 
 $(document).ready(function(){
-	$.getScript("https://use.fontawesome.com/1bf1738307.js", function(data, textStatus, jqxhr){
+	$.getScript("https://use.fontawesome.com/releases/v5.0.10/js/all.js", function(data, textStatus, jqxhr){
 	});
 });

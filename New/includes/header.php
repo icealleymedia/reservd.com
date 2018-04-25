@@ -9,6 +9,7 @@
 	</head>
 	<body>
 		<header id="header">
+			<h1>Spotter Business &amp; Appointment Service</h1>
 		</header>
 		<content>
 		
