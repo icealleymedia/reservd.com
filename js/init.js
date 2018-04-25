@@ -72,7 +72,7 @@ function init(){
         function(){
             if(jQuery){
                 validateScript = new Loader();
-                validateScript.require(["https://cdn.jsdelivr.net/npm/jquery-validation@1.17.0/dist/jquery.validate.min.js"], function(){
+                validateScript.require(["https://cdn.jsdelivr.net/npm/jquery-validation/1.17.0/dist/jquery.validate.min.js"], function(){
                     // form submit without validation
                 /*$("#register").on("submit", function(e){
                     submitRegistration(e);

@@ -15,3 +15,16 @@ noscript{
 .loader{
 	display: none;
 }
+ul.nav {
+	display: block;
+	font-size: 12px;
+	font-family: helvetica;
+	text-decoration: none;
+}
+li {
+	display: inline;
+		text-decoration: none;
+}
+li.a {
+	text-decoration: none;
+}
