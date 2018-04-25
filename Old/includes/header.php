@@ -14,18 +14,14 @@ require_once($_SERVER['DOCUMENT_ROOT'] . '/includes/init.php'); ?>
 			// user is not logged in redirect to login page if current page isnt the login page.
 			if($_SERVER["PHP_SELF"] != "/login.php"){
 				if($_SERVER["PHP_SELF"] != "/registration.php"){
-					exit;
+					$url = '/login.php';
+					echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
 				}else{
-				$url = '/login.php';
-				echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
+					$url = '/login.php';
+					echo '<META HTTP-EQUIV="refresh" content="0;URL=' . $url . '">';
 				}
 			}
 		}
-		
-		if($_SERVER["PHP_SELF"] != "/login.php" || $_SERVER["PHP_SELF"] != "/registration.php"){
-				$url = '/login.php';
-				echo '<META HTTP-EQUIV="refresh" content="0;URL=' .$url. '">';
-			}
 		
 		?>
 <!DOCTYPE html>

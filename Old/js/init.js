@@ -91,7 +91,7 @@ function init(){
                         },
                         email:{
                             required: true,
-                            email: true,
+                            email: true
                         },
                         password: "required",
                         passwordrepeat: {
