@@ -1,4 +1,9 @@
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/New/includes/header.php"); ?>
+<?php
+	if(isset($_SESSION['id'])){
+		header("location: dashboard.php");
+	}
+?>
 <form id="login" action="#" method="post" />
 	<div>
 		<span><i class="fas fa-user"></i><input type="text" name="loginId" placeholder="email or username"></span>
