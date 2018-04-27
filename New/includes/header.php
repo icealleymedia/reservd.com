@@ -1,5 +1,5 @@
 <?php
-	if($_SERVER['REQUEST_URI'] != "index.php");
+	if($_SERVER['REQUEST_URI'] != "index.php"){
 		if(session_status() == PHP_SESSION_NONE){
 			session_start();
 		}
