@@ -4,6 +4,7 @@
 			session_start();
 		}
 	}
+	require($_SERVER['DOCUMENT_ROOT'] != "/classes/User.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
