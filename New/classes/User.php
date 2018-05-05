@@ -16,7 +16,7 @@ class User{
 			$userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 
 			if($stmt->rowCount() > 0){
-				if(password_verify($upass, $userRow["password"])){
+				if(password_verify($upass, $userRow["pass_key"])){
 	                if(isset($remember)){
 	                	// set cookie if remember me is selected.
 	                }else{

@@ -7,6 +7,7 @@
 		<?php
 			if(APP_DEBUG == true){
 				$all_vars = get_defined_vars();
+				echo "<h5>Debugging Information</h5>";
 				echo "<pre>";
 				var_dump($all_vars);
 				echo "</pre>";
