@@ -11,7 +11,7 @@ class User{
 		try{
 			$stmt = $this->db->prepare("SELECT * FROM Users WHERE email OR Username = :loginID LIMIT 1");
 
-			$stmt->execute(':loginID' = $loginID);
+			$stmt->execute(array(':loginID' => $loginID));
 
 			$userRow = $stmt->fetch(PDO::FETCH_ASSOC);
 

@@ -1,10 +1,7 @@
 <?php
+	require_once($_SERVER['DOCUMENT_ROOT'] . "/New/includes/init.php");
 	if($_SERVER['REQUEST_URI'] != "index.php"){
-		if(session_status() == PHP_SESSION_NONE){
-			session_start();
-		}
 	}
-	require($_SERVER['DOCUMENT_ROOT'] != "/classes/User.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
