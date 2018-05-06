@@ -3,26 +3,36 @@
 	if(isset($_SESSION['id']) || isset($_COOKIE['idx'])){
 		header("location: dashboard.php");
 	}
-	if(isset($_POST["submit"]){
+	if(isset($_POST["submit"])){
 		// validate inputs 
 		
 		// if inputs are valid continue
 		// check if remember is set
-		if(isset($_POST["remember"]){
+		if(isset($_POST["remember"])){
 			// call user login with remember set to true
 		}
 		// call user login with remember set to false
 	}
 ?>
 <form id="login" action="index.php" method="post" />
+	<h2>Login to Spotter</h2>
 	<div>
-		<span><i class="fas fa-user"></i><input type="text" name="loginId" placeholder="email or username"></span>
+		<label for="loginId">Email or Username</label>
+		<span><i class="far fa-user"></i><input type="text" name="loginId" id="loginId"></span>
 	</div>
 	<div>
-		<span><i class="fas fa-lock"></i><input type="password" name="loginKey" placeholder="Password"></span>
+		<label for="loginKey">Password</label>
+		<span><i class="fas fa-shield-alt"></i><input type="password" name="loginKey"></span>
 	</div>
 	<div>
 		<!-- add remember me check box and forgot password link here -->
+		<span>
+			<input type="checkbox" name="remember" id="remember" value="true" >
+			<label for="remember">Remember Me</label>
+		</span>
+		<span>
+			<a href="forgot.php">Forgot Account?</a>
+		</span>
 	</div>
 	<div>
 		<input type="submit" id="login" value="Sign On" />
