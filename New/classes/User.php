@@ -17,10 +17,11 @@ class User{
 
 			if($stmt->rowCount() > 0){
 				if(password_verify($upass, $userRow["pass_key"])){
-	                if(isset($remember)){
+	                if(isset($remember && $remember == true){
 	                	// set cookie if remember me is selected.
+	                	setcookie("idx", base64_encode($userRow['user_id']);
 	                }else{
-	                	$_SESSION['user_session'] = $userRow['user_id'];
+	                	$_SESSION['user_session'] = base64_encode($userRow['user_id']);
 	            	}
 	                return true;
 				}else{
@@ -30,6 +31,10 @@ class User{
 		}catch(PDOException $e){
            echo $e->getMessage();
      	}
-     }
+    }
+
+    public function registerUser(){
+    	
+    }
 }
 ?>

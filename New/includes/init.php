@@ -14,6 +14,7 @@
 	require_once('libs/PHPMailer/src/Exception.php');
 	require_once('libs/PHPMailer/src/PHPMailer.php');
 	require_once('libs/PHPMailer/src/SMTP.php');
+	require_once('libs/Valitron/src/Validator.php');
 	require_once('classes/User.php');
 
 	$user = new User($DB_con);

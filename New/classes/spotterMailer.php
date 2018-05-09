@@ -21,7 +21,27 @@
 			}
 		}
 		
-		public function RegisterMail(){
+		public function RegisterMail($args){
+					// subject of email
+					$this->Subject = "Welcome to Spotter activate your account";
+					// html email
+
+					$this->Body = '<h2>Hello ' . $args['firstname'] . '&nbsp;' . $args['lastname'] . '</h2>
+					<p>Thankyou for registering for Spotter to better your business and manage your client bookings to activate your account please follow the link below</p>
+					<br />
+					<a href="https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '&User=' . base64_encode($args['userType']) . '" title="Activate your Reservd Account">Activate your account Now</a>
+					<p>or</p>
+					<p>Copy the url below in to your browsers address field</p>
+					<p>https://cdn.icealleymedia.com/api/activate.php?activateCode=' . $encryptedHash . '&User=' . base64_encode($args['userType']) .'</p>';
+
+					// Plain Textail
+					$this->AltBody = "Plain Text Here";
+
+					// set user email and ishtml format to true
+					$this->addAddress($args['email']);
+
+					// send email
+					$this->Send();
 			
 		}
 	

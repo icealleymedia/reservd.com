@@ -4,14 +4,20 @@
 		header("location: dashboard.php");
 	}
 	if(isset($_POST["submit"])){
+		$user = new User();
 		// validate inputs 
-		
-		// if inputs are valid continue
-		// check if remember is set
-		if(isset($_POST["remember"])){
-			// call user login with remember set to true
+		$v = New Valitron\Validator($_POST);
+		$v->rule('required', ['loginId', 'loginKey']);
+
+		if($v->validate()){
+			// if inputs are valid continue
+			// check if remember is set
+			if(isset($_POST["remember"])){
+				// call user login with remember set to true
+					
+			}
+			// call user login with remember set to false
 		}
-		// call user login with remember set to false
 	}
 ?>
 <form id="login" action="index.php" method="post" />
