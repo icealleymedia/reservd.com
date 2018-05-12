@@ -14,9 +14,10 @@
 			// check if remember is set
 			if(isset($_POST["remember"])){
 				// call user login with remember set to true
-					
+			$user->login($_POST["loginId"], $_POST["loginKey"], true);
 			}
 			// call user login with remember set to false
+			$user->login($_POST["loginId"], $_POST["loginKey"], false);
 		}
 	}
 ?>
