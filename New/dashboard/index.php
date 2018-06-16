@@ -1,7 +1,7 @@
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/New/includes/header.php"); ?>
 <ul id="dashboardNav">
 	<li><a href="" title="">Business Settings</a></li>
-	<li><a href="" title="">Appointment Ledger</a></li>
+	<li><a href="<? echo $homePath; ?>/ledger" title="View and manage appointments for your establishment">Appointment Ledger</a></li>
 	<li><a href="" title=""><i></i>Staff Management</a>
 		<ul>
 			<li><a href="" title="">Add Staff</a></li>
