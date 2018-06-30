@@ -17,9 +17,9 @@ class User{
 
 			if($stmt->rowCount() > 0){
 				if(password_verify($upass, $userRow["pass_key"])){
-	                if(isset($remember && $remember == true){
+	                if(isset($remember) && $remember == true){
 	                	// set cookie if remember me is selected.
-	                	setcookie("idx", base64_encode($userRow['user_id']);
+	                	setcookie("idx", base64_encode($userRow['user_id']));
 	                }else{
 	                	$_SESSION['user_session'] = base64_encode($userRow['user_id']);
 	            	}
