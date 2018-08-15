@@ -28,16 +28,20 @@ ledger.prototype.ready = function(){
 
 ledger.prototype.setScope = function (){
 	this.timebar = "<time><header><ul>";
-	var d = new Date();
-	var h = d.setHours(this.openTime);
-	for(i = h; i <= this.closeTime; i++){
-		var timeslot = "" ;
-		this.timebar += '<li><span class="time-label"> ' + this.formatTime(i) + '</span></li>';
-		if(this.timeIncrement == 30){
-			timeslot = i + ":30";
-			this.timebar += '<li><span class="time-label"> ' + timeslot + '</span></li>';
+	var timeLoop = moment(this.openTime, "hh");
+	var close = moment(this.closeTime, "hh");
+	console.log(this.closeTime);
+	console.log(timeLoop.format("LT"));
+	console.log(close.format("LT"));
+	console.log(moment().format("MMMM Do YYYY"));
+	while(timeLoop < close){
+		if(this.format == 1){
+			this.timebar += '<li><span class="time-label"> ' + timeLoop.format("h:mm A") + '</span>' +  this.addButton() + '</li>';
+		}else{
+			this.timebar += '<li><span class="time-label"> ' + timeLoop.format("kk:mm") + '</span>' +  this.addButton() + '</li>';
 		}
-	}
+		timeLoop.add(this.timeIncrement, "m");
+	} 
 	this.timebar += '</ul></header></time>';
 	
 	this.Draw();
@@ -61,6 +65,13 @@ ledger.prototype.getThings = function(){
 	
 	$(this.container).append(this.thingsoutput);
 }
+
+ledger.prototype.addButton = function(buttonID){
+	var btnID = buttonID;
+	var addButton = '<a href="#" id="' + buttonID + '" class="addbutton"><i class="fas fa-plus-circle"></i><span>Add New</span></a>';
+	return(addButton);
+}
+
 ledger.prototype.addBooking = function(){
 	
 }

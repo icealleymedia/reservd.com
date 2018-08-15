@@ -22,7 +22,7 @@
 	}
 ?>
 <form id="login" action="index.php" method="post" />
-	<h2>Login to Spotter</h2>
+	<h2>Login to Bookify</h2>
 	<div>
 		<label for="loginId">Email or Username</label>
 		<span><i class="far fa-user"></i><input type="text" name="loginId" id="loginId"></span>
@@ -42,7 +42,7 @@
 		</span>
 	</div>
 	<div>
-		<input type="submit" id="login" value="Sign On" />
+		<input type="submit" id="login" value="Login" />
 	</div>
 </form>
 <?php require($_SERVER["DOCUMENT_ROOT"] . "/New/includes/footer.php"); ?>

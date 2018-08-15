@@ -3,13 +3,15 @@
 	if(APP_DEBUG == true){
 		ini_set('display_errors', 'On');
 		error_reporting(E_ALL);
+		echo $_SERVER["DOCUMENT_ROOT"];
+		echo $_SERVER["REQUEST_URI"];
 	}
 	set_include_path( get_include_path() . PATH_SEPARATOR . $_SERVER['DOCUMENT_ROOT'] . '/New' );
 	//$siteRoot = dirname(__DIR__) . '/New';
 	if(session_status() == PHP_SESSION_NONE){
 		session_start();
 	}
-	echo $_SERVER["DOCUMENT_ROOT"];
+	
 	require_once('DB_Config.php');
 	require_once('libs/PHPMailer/src/Exception.php');
 	require_once('libs/PHPMailer/src/PHPMailer.php');

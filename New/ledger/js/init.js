@@ -7,7 +7,7 @@ console.log("init loaded");
 			console.log("moment.js loaded in successfully");
 			if(jqxhr.status == 200){
 				$.ajax({
-					url: "dist/ledger.js",
+					url: "dist/ledger2.js",
 					dataType: "script",
 					success: function(){
 						var appointments = new ledger({
