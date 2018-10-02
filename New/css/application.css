@@ -1,0 +1,62 @@
+body {
+	margin: 0;
+}
+ul.nav li {
+    display: inline-block;
+    margin: 1em;	
+}
+
+ul.nav a {
+	margin: 0 10px;
+	font-family: "Lucida Grande", "Lucida Sans Unicode", "Lucida Sans", "DejaVu Sans", Verdana, "sans-serif";
+	color: white;
+	font-size: 16px;
+	padding: 16px;
+}
+
+ul.nav {
+    width: 100%;
+    height: auto;
+    background-color: #2d303a;
+    position: fixed;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+}
+
+/* Style the video: 100% width and height to cover the entire window */
+#myVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%; 
+    min-height: 100%;
+}
+
+/* Add some content at the bottom of the video/page */
+.content {
+
+}
+
+/* hover styles */
+a:hover {
+    color: #9BC1BC;
+}
+
+ul.nav a:hover {
+	background-color: indianred;	
+}
+
+
+
+
+
+
+
+/* Extra */
+a {
+    text-decoration: none;
+    color: #F8F3EF;
+    -webkit-transition: 0.2s;
+    transition: 0.2s;
+}
